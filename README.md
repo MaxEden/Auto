@@ -1,5 +1,5 @@
 # Auto  
-Auto is extremely lightweight, minimal dependensies, low ceremony, easily embedable build system highly inspired by NUKE.
+Auto is extremely lightweight, minimal dependensies, low ceremony, easily embedable build system highly inspired by [NUKE](https://github.com/nuke-build/nuke).
 Auto mostly consists of static methods that ensures that all dependencies are obvious and allows you to use it in any context.
 Auto aims to be mostly a set of helper scripts that are independent from each other.
 Some of auto methods such as related to SSH require installed GNU toolchain or cygwin.
