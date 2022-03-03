@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Update="MandarinAuto.Misc\UnityProjectDuplicator\ProjectGenerator.tt">
+        <Generator>TextTemplatingFilePreprocessor</Generator>
+        <LastGenOutput>ProjectGenerator.cs</LastGenOutput>
+      </None>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="MandarinAuto.Misc\UnityProjectDuplicator\ProjectGenerator.cs">
+        <DependentUpon>ProjectGenerator.tt</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Auto.Standard\Auto.csproj" />
+    </ItemGroup>
+
+</Project>

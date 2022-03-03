@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <DefaultItemExcludes>*.meta</DefaultItemExcludes>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+        <OutputPath>bin\Debug\</OutputPath>
+    </PropertyGroup>
+
+
+    <ItemGroup>
+        <ProjectReference Include="..\Auto.Shared\Auto.Shared.csproj" />
+        <ProjectReference Include="..\Hi\Hi\Hi.csproj" />
+        <ProjectReference Include="..\Mini.Utils\Mini.Utils.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Reference Include="UnityEditor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null">
+          <HintPath>..\ThirdParty\Unity\UnityEditor.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine">
+            <HintPath>..\ThirdParty\Unity\UnityEngine.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.CoreModule">
+            <HintPath>..\ThirdParty\Unity\UnityEngine.CoreModule.dll</HintPath>
+        </Reference>
+        <Reference Include="UnityEngine.IMGUIModule">
+            <HintPath>..\ThirdParty\Unity\UnityEngine.IMGUIModule.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+
+    <Target AfterTargets="Build" Name="After">
+        <ItemGroup>
+            <FilesToDelete Include="$(OutDir)**\Unity*" />
+        </ItemGroup>
+        <Delete Files="@(FilesToDelete)" />
+<!--        <Delete Files="$(TargetPath)"/>-->
+<!--        <RemoveDir Directories="$(MSBuildProjectDirectory)/obj/" />-->
+        <Exec Command="mklink /J &quot;..\Templates\UnityPack\UnityPack\Assets\Game\Editor\AutoPlugin&quot; &quot;$(MSBuildProjectDirectory)/bin/&quot;" ContinueOnError="true" />
+<!--         <RemoveDir Directories="$(MSBuildProjectDirectory)/bin/" />&ndash;&gt;-->
+<!--        <Exec Command="mklink /J &quot;..\Templates\UnityPack\UnityPack\Assets\Game\Editor\AutoPlugin&quot; &quot;$(MSBuildProjectDirectory)/bin/&quot;" ContinueOnError="true" />-->
+    </Target>
+</Project>
